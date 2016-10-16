@@ -32,6 +32,8 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+const fileController = require('./controllers/files');
+
 
 /**
  * API keys and Passport configuration.
@@ -209,6 +211,10 @@ app.get('/auth/pinterest', passport.authorize('pinterest', { scope: 'read_public
 app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRedirect: '/login' }), (req, res) => {
   res.redirect('/api/pinterest');
 });
+
+
+// Routes written by Arda
+app.get('/generateKey', fileController.generateKey);
 
 /**
  * Error Handler.
